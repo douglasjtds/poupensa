@@ -1,0 +1,113 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./shadcn.css"; /* vendorado de shadcn/tailwind.css (o pacote CLI não é dependência de runtime) */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-primary-hover: var(--primary-hover);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Paleta Poupensa — instructions/DESIGN-GUIDELINES.md.
+   Light mode only no MVP (dark mode fora do escopo, MVP-SCOPE.md). */
+:root {
+  --background: #fafaf9;
+  --foreground: #1c1917;
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  --popover: #ffffff;
+  --popover-foreground: #1c1917;
+  /* Verde da marca é #1F9D55 (DESIGN-GUIDELINES), mas branco sobre ele dá
+     3.49:1 — abaixo do AA 4.5:1 que o próprio doc exige. Para texto sobre
+     verde usamos o tom hover oficial #188345 (4.80:1); o verde claro segue
+     em ícones, sucesso e gráficos. Decisão documentada no relatório final. */
+  --primary: #188345; /* verde AA: CTAs, links, confirmação */
+  --primary-foreground: #ffffff;
+  --primary-hover: #146c39;
+  --secondary: #f5f5f4;
+  --secondary-foreground: #1c1917;
+  --muted: #f5f5f4;
+  --muted-foreground: #78716c;
+  --accent: #8b5cf6; /* lilás: marca, sugestão calculada, badges */
+  --accent-foreground: #ffffff;
+  --accent-hover: #7c3aed;
+  --success: #1f9d55;
+  --warning: #d97706;
+  --destructive: #dc2626;
+  --border: #e7e5e4;
+  --input: #e7e5e4;
+  --ring: #188345;
+  --chart-1: #1f9d55;
+  --chart-2: #8b5cf6;
+  --chart-3: #d97706;
+  --chart-4: #78716c;
+  --chart-5: #1c1917;
+  --radius: 1rem; /* radius-lg 16px; md/sm derivam via fatores do tema */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1c1917;
+  --sidebar-primary: #188345;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5f5f4;
+  --sidebar-accent-foreground: #1c1917;
+  --sidebar-border: #e7e5e4;
+  --sidebar-ring: #1f9d55;
+  --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.04);
+  --shadow-md: 0 2px 8px rgba(28, 25, 23, 0.08);
+  --shadow-lg: 0 8px 24px rgba(28, 25, 23, 0.12);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
