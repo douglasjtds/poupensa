@@ -29,7 +29,9 @@ export function VoiceInputButton({
         return;
       }
       onResult(formatQuantityForInput(quantity));
-      toast.info(`Reconhecido: "${transcript}" → ${formatQuantityForInput(quantity)}. Confira antes de salvar.`);
+      toast.info(
+        `Reconhecido: "${transcript}" → ${formatQuantityForInput(quantity)}. Confira antes de salvar.`
+      );
     } else {
       onResult(transcript.trim());
       toast.info(`Reconhecido: "${transcript.trim()}". Confira antes de salvar.`);
@@ -51,7 +53,11 @@ export function VoiceInputButton({
         listening && "border-accent bg-accent/10 text-accent animate-pulse"
       )}
     >
-      {listening ? <Square className="size-4" aria-hidden /> : <Mic className="size-5" aria-hidden />}
+      {listening ? (
+        <Square className="size-4" aria-hidden />
+      ) : (
+        <Mic className="size-5" aria-hidden />
+      )}
     </Button>
   );
 }

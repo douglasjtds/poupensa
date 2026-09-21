@@ -89,9 +89,7 @@ export function calculateSuggestion(input: SuggestionInput): Suggestion {
   const checksSorted = [...input.checks].sort((a, b) => a.date.localeCompare(b.date));
   const prevCheck = [...checksSorted].reverse().find((c) => c.date < lastPurchase.date);
 
-  const cyclePurchases = prevCheck
-    ? purchases.filter((p) => p.date >= prevCheck.date)
-    : purchases;
+  const cyclePurchases = prevCheck ? purchases.filter((p) => p.date >= prevCheck.date) : purchases;
   const cycleStart = cyclePurchases[0].date;
 
   // Conferência do ciclo atual (a mais recente em/depois do início do ciclo).

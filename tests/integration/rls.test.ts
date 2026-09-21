@@ -73,10 +73,10 @@ run("RLS entre households", () => {
   it("não-membro não insere registro de compra em item alheio", async () => {
     await asUser(db, userB);
     await expect(
-      db.query(
-        "insert into purchase_records (item_id, quantity, created_by) values ($1, 99, $2)",
-        [itemA, userB]
-      )
+      db.query("insert into purchase_records (item_id, quantity, created_by) values ($1, 99, $2)", [
+        itemA,
+        userB,
+      ])
     ).rejects.toThrow(/row-level security/);
   });
 

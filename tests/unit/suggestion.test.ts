@@ -92,9 +92,7 @@ describe("calculateSuggestion — item novo sem histórico", () => {
   });
 
   it("conferência sem nenhuma compra continua sem histórico", () => {
-    const s = calculateSuggestion(
-      input({ checks: [{ quantityLeft: 2, date: "2026-07-01" }] })
-    );
+    const s = calculateSuggestion(input({ checks: [{ quantityLeft: 2, date: "2026-07-01" }] }));
     expect(s.basis).toBe("no-history");
     expect(s.quantity).toBeNull();
   });
@@ -102,9 +100,7 @@ describe("calculateSuggestion — item novo sem histórico", () => {
 
 describe("calculateSuggestion — conferência pulada (gap de dados)", () => {
   it("repete a última compra quando nunca houve conferência", () => {
-    const s = calculateSuggestion(
-      input({ purchases: [{ quantity: 4, date: "2026-06-01" }] })
-    );
+    const s = calculateSuggestion(input({ purchases: [{ quantity: 4, date: "2026-06-01" }] }));
     expect(s.basis).toBe("no-check");
     expect(s.quantity).toBe(4);
     expect(s.dailyConsumption).toBeNull();

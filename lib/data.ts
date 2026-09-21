@@ -67,7 +67,13 @@ export async function fetchItemsWithHistory(
 
 export async function createItem(
   supabase: Supabase,
-  params: { householdId: string; name: string; unit: string; initialQuantity?: number | null; userId: string }
+  params: {
+    householdId: string;
+    name: string;
+    unit: string;
+    initialQuantity?: number | null;
+    userId: string;
+  }
 ): Promise<Item> {
   const { data: item, error } = await supabase
     .from("items")

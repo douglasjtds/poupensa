@@ -23,7 +23,12 @@ import type { ItemWithHistory } from "@/lib/data";
 import type { Item } from "@/types/database";
 
 function formatQty(n: number): string {
-  return Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/\.?0+$/, "").replace(".", ",");
+  return Number.isInteger(n)
+    ? String(n)
+    : n
+        .toFixed(2)
+        .replace(/\.?0+$/, "")
+        .replace(".", ",");
 }
 
 function ItemStatus({ item }: { item: ItemWithHistory }) {

@@ -9,24 +9,25 @@ Não implemente nada listado como "fora do MVP" nesses documentos.
 
 ## Onde cada tipo de arquivo vive (NÃO mover)
 
-| Tipo de arquivo | Local obrigatório |
-|---|---|
-| Rotas, páginas e layouts | `app/` (App Router; rota = pasta com `page.tsx`) |
-| Componentes shadcn/ui gerados | `components/ui/` (não editar manualmente além do necessário) |
-| Componentes de produto reutilizáveis | `components/` (fora de `ui/`) |
-| Lógica pura / domínio (ex.: cálculo de sugestão) | `lib/domain/` — sem imports de React ou Supabase |
-| Clientes e helpers de Supabase | `lib/supabase/` |
-| Utilitários genéricos | `lib/` |
-| Tipos compartilhados | `types/` |
-| Migrations SQL do Supabase | `supabase/migrations/` |
-| Seed de dados | `supabase/seed.sql` (ou scripts em `supabase/`) |
-| Testes unitários | `tests/unit/` |
-| Testes de integração | `tests/integration/` |
-| Testes E2E (Playwright) | `e2e/` |
-| Assets estáticos (ícones, manifest) | `public/` |
-| Documentos de produto | `instructions/` (somente leitura, não gerar código aqui) |
+| Tipo de arquivo                                  | Local obrigatório                                            |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| Rotas, páginas e layouts                         | `app/` (App Router; rota = pasta com `page.tsx`)             |
+| Componentes shadcn/ui gerados                    | `components/ui/` (não editar manualmente além do necessário) |
+| Componentes de produto reutilizáveis             | `components/` (fora de `ui/`)                                |
+| Lógica pura / domínio (ex.: cálculo de sugestão) | `lib/domain/` — sem imports de React ou Supabase             |
+| Clientes e helpers de Supabase                   | `lib/supabase/`                                              |
+| Utilitários genéricos                            | `lib/`                                                       |
+| Tipos compartilhados                             | `types/`                                                     |
+| Migrations SQL do Supabase                       | `supabase/migrations/`                                       |
+| Seed de dados                                    | `supabase/seed.sql` (ou scripts em `supabase/`)              |
+| Testes unitários                                 | `tests/unit/`                                                |
+| Testes de integração                             | `tests/integration/`                                         |
+| Testes E2E (Playwright)                          | `e2e/`                                                       |
+| Assets estáticos (ícones, manifest)              | `public/`                                                    |
+| Documentos de produto                            | `instructions/` (somente leitura, não gerar código aqui)     |
 
 Regras:
+
 - Lógica de negócio (especialmente o cálculo de sugestão) fica em módulos puros
   em `lib/domain/`, testáveis sem UI e sem rede.
 - Client-side first: mínimo de server-side (conforme PRD.md).

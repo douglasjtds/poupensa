@@ -22,9 +22,7 @@ run("Convite de household", () => {
     third = await createUser(db, `third-${Date.now()}@invite.test`);
 
     await asUser(db, founder);
-    const { rows } = await db.query(
-      "select id, invite_code from create_household('Casa Convite')"
-    );
+    const { rows } = await db.query("select id, invite_code from create_household('Casa Convite')");
     householdId = rows[0].id;
     inviteCode = rows[0].invite_code;
   });

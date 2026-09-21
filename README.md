@@ -35,7 +35,7 @@ Banco: aplique as migrations de `supabase/migrations/` no seu projeto Supabase
    client ID/secret no Google Cloud Console e a redirect URL
    `https://<projeto>.supabase.co/auth/v1/callback`)
 4. Auth → URL Configuration: adicionar a URL do app (local e produção) em
-   *Redirect URLs* (`http://localhost:3000/auth/callback`, etc.)
+   _Redirect URLs_ (`http://localhost:3000/auth/callback`, etc.)
 
 ## Testes
 

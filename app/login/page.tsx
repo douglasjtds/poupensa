@@ -89,12 +89,20 @@ function LoginForm() {
               {submitting ? "Entrando…" : "Entrar"}
             </Button>
           </form>
-          <Button type="button" variant="outline" onClick={handleGoogleLogin} className="h-11 w-full">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={handleGoogleLogin}
+            className="h-11 w-full"
+          >
             Continuar com Google
           </Button>
           <p className="text-center text-sm text-muted-foreground">
             Ainda não tem conta?{" "}
-            <Link href="/signup" className="font-medium text-primary underline-offset-4 hover:underline">
+            <Link
+              href="/signup"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
               Criar conta
             </Link>
           </p>

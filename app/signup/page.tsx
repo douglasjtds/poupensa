@@ -73,8 +73,8 @@ export default function SignupPage() {
           <CardHeader>
             <CardTitle className="text-xl">Confirme seu email</CardTitle>
             <CardDescription>
-              Enviamos um link de confirmação para <strong>{email}</strong>. Abra o link para
-              ativar sua conta.
+              Enviamos um link de confirmação para <strong>{email}</strong>. Abra o link para ativar
+              sua conta.
             </CardDescription>
           </CardHeader>
         </Card>
@@ -137,12 +137,20 @@ export default function SignupPage() {
               {submitting ? "Criando…" : "Criar conta"}
             </Button>
           </form>
-          <Button type="button" variant="outline" onClick={handleGoogleSignup} className="h-11 w-full">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={handleGoogleSignup}
+            className="h-11 w-full"
+          >
             Continuar com Google
           </Button>
           <p className="text-center text-sm text-muted-foreground">
             Já tem conta?{" "}
-            <Link href="/login" className="font-medium text-primary underline-offset-4 hover:underline">
+            <Link
+              href="/login"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
               Entrar
             </Link>
           </p>

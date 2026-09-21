@@ -75,7 +75,9 @@ export default function CompraPage() {
       await recordPurchases(supabase, { userId: user.id, date, entries });
       clearShoppingList();
       setQuantities({});
-      toast.success(`Compra registrada: ${entries.length} ${entries.length === 1 ? "item" : "itens"}`);
+      toast.success(
+        `Compra registrada: ${entries.length} ${entries.length === 1 ? "item" : "itens"}`
+      );
       reload();
     } catch {
       toast.error("Não foi possível registrar a compra.");
@@ -150,12 +152,7 @@ export default function CompraPage() {
           </ul>
         )}
 
-        <Button
-          type="button"
-          variant="outline"
-          className="h-11"
-          onClick={() => setFormOpen(true)}
-        >
+        <Button type="button" variant="outline" className="h-11" onClick={() => setFormOpen(true)}>
           <Plus className="size-4" aria-hidden />
           Adicionar item novo
         </Button>

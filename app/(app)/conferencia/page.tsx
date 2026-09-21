@@ -27,10 +27,7 @@ export default function ConferenciaPage() {
   const [invalid, setInvalid] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
 
-  const filled = useMemo(
-    () => Object.entries(lefts).filter(([, v]) => v.trim() !== ""),
-    [lefts]
-  );
+  const filled = useMemo(() => Object.entries(lefts).filter(([, v]) => v.trim() !== ""), [lefts]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -128,9 +125,7 @@ export default function ConferenciaPage() {
                         <VoiceInputButton
                           label={`Ditar quanto sobrou de ${item.name}`}
                           mode="quantity"
-                          onResult={(text) =>
-                            setLefts((prev) => ({ ...prev, [item.id]: text }))
-                          }
+                          onResult={(text) => setLefts((prev) => ({ ...prev, [item.id]: text }))}
                         />
                       }
                     />

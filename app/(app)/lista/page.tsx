@@ -59,10 +59,7 @@ export default function ListaPage() {
     setInitialized(true);
   }, [items, initialized]);
 
-  const selectedCount = useMemo(
-    () => Object.values(included).filter(Boolean).length,
-    [included]
-  );
+  const selectedCount = useMemo(() => Object.values(included).filter(Boolean).length, [included]);
 
   function handleFinalize() {
     if (!items) return;

@@ -83,7 +83,11 @@ export default function CasaPage() {
                 aria-label="Copiar código de convite"
                 className="h-11"
               >
-                {copied ? <Check className="size-4" aria-hidden /> : <Copy className="size-4" aria-hidden />}
+                {copied ? (
+                  <Check className="size-4" aria-hidden />
+                ) : (
+                  <Copy className="size-4" aria-hidden />
+                )}
                 {copied ? "Copiado" : "Copiar"}
               </Button>
             </div>
