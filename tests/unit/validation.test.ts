@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   parseQuantity,
+  safeNextPath,
   validateInviteCode,
   validateItemName,
   validateQuantity,
@@ -37,6 +38,18 @@ describe("parseQuantity", () => {
     expect(parseQuantity("1,5")).toBe(1.5);
     expect(parseQuantity("2")).toBe(2);
   });
+
+  it("trata ponto como separador de milhar do pt-BR", () => {
+    expect(parseQuantity("1.000")).toBe(1000);
+    expect(parseQuantity("12.500")).toBe(12500);
+    expect(parseQuantity("1.000,5")).toBe(1000.5);
+    expect(validateQuantity("1.000,5").ok).toBe(true);
+  });
+
+  it("mantém ponto decimal fora do padrão de milhar", () => {
+    expect(parseQuantity("1.5")).toBe(1.5);
+    expect(parseQuantity("0.25")).toBe(0.25);
+  });
 });
 
 describe("validateItemName", () => {
@@ -71,5 +84,24 @@ describe("validateInviteCode", () => {
     expect(validateInviteCode("ABCDEFG").ok).toBe(false);
     expect(validateInviteCode("ABC12!").ok).toBe(false);
     expect(validateInviteCode("").ok).toBe(false);
+  });
+});
+
+describe("safeNextPath", () => {
+  it("aceita caminhos relativos do app", () => {
+    expect(safeNextPath("/lista")).toBe("/lista");
+    expect(safeNextPath("/compra?x=1")).toBe("/compra?x=1");
+  });
+
+  it("cai no fallback sem next", () => {
+    expect(safeNextPath(null)).toBe("/despensa");
+    expect(safeNextPath("")).toBe("/despensa");
+  });
+
+  it("bloqueia destinos externos (open redirect)", () => {
+    expect(safeNextPath("https://evil.com/x")).toBe("/despensa");
+    expect(safeNextPath("@evil.com")).toBe("/despensa");
+    expect(safeNextPath("//evil.com")).toBe("/despensa");
+    expect(safeNextPath("/\\evil.com")).toBe("/despensa");
   });
 });

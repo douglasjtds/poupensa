@@ -2,8 +2,20 @@
 
 export type ValidationResult = { ok: true } | { ok: false; error: string };
 
+/**
+ * Converte texto numérico no formato pt-BR. Com vírgula, os pontos são
+ * separadores de milhar ("1.000,5"); sem vírgula, só "1.000"/"12.500" (grupos
+ * de 3) são milhar — "1.5" segue como decimal (teclado com ponto).
+ */
+function normalizeNumber(raw: string): number {
+  const text = raw.trim();
+  if (text.includes(",")) return Number(text.replace(/\./g, "").replace(",", "."));
+  if (/^\d{1,3}(\.\d{3})+$/.test(text)) return Number(text.replace(/\./g, ""));
+  return Number(text);
+}
+
 export function validateQuantity(raw: string | number): ValidationResult {
-  const value = typeof raw === "string" ? Number(raw.replace(",", ".")) : raw;
+  const value = typeof raw === "string" ? normalizeNumber(raw) : raw;
   if (raw === "" || Number.isNaN(value)) {
     return { ok: false, error: "Informe uma quantidade" };
   }
@@ -17,7 +29,7 @@ export function validateQuantity(raw: string | number): ValidationResult {
 }
 
 export function parseQuantity(raw: string): number {
-  return Number(raw.replace(",", "."));
+  return normalizeNumber(raw);
 }
 
 export function validateItemName(name: string): ValidationResult {
@@ -42,6 +54,18 @@ export function validateInviteCode(code: string): ValidationResult {
     return { ok: false, error: "Código de convite tem 6 letras/números" };
   }
   return { ok: true };
+}
+
+/**
+ * Destino pós-login vindo da URL (`?next=`). Só aceita caminho relativo do
+ * próprio app; "//host", "/\\host" e URLs absolutas viram o fallback, para
+ * não virar open redirect.
+ */
+export function safeNextPath(next: string | null | undefined, fallback = "/despensa"): string {
+  if (!next || !next.startsWith("/") || next.startsWith("//") || next.startsWith("/\\")) {
+    return fallback;
+  }
+  return next;
 }
 
 export const UNITS = ["un", "kg", "g", "L", "ml", "pacote", "caixa", "rolo", "dúzia"] as const;

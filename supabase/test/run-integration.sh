@@ -32,6 +32,7 @@ psql -p "$PGPORT" -d "$DB" -v ON_ERROR_STOP=1 \
   -f "$REPO_DIR/supabase/test/auth-shim.sql" \
   -f "$REPO_DIR/supabase/migrations/00001_initial_schema.sql" \
   -f "$REPO_DIR/supabase/migrations/00002_rls_policies.sql" \
+  -f "$REPO_DIR/supabase/migrations/00003_join_household_lock.sql" \
   -f "$REPO_DIR/supabase/test/grants.sql" >/dev/null
 
 export TEST_DATABASE_URL="postgres://postgres@127.0.0.1:$PGPORT/$DB"

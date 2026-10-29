@@ -58,6 +58,38 @@ describe("calculateSuggestion — caso normal (comprou X, sobrou Y)", () => {
     expect(s.quantity).toBe(2);
   });
 
+  it("conferência no mesmo dia da compra fecha o ciclo anterior", () => {
+    // dia 0 compra 10; dia 30 confere (sobrou 2) e compra 6 no mesmo dia
+    const afterPurchase = calculateSuggestion(
+      input({
+        purchases: [
+          { quantity: 10, date: "2026-06-01" },
+          { quantity: 6, date: "2026-07-01" },
+        ],
+        checks: [{ quantityLeft: 2, date: "2026-07-01" }],
+      })
+    );
+    // ciclo novo ainda sem conferência: repete a compra do dia, sem somar as 10
+    expect(afterPurchase.basis).toBe("no-check");
+    expect(afterPurchase.quantity).toBe(6);
+
+    const nextCheck = calculateSuggestion(
+      input({
+        purchases: [
+          { quantity: 10, date: "2026-06-01" },
+          { quantity: 6, date: "2026-07-01" },
+        ],
+        checks: [
+          { quantityLeft: 2, date: "2026-07-01" },
+          { quantityLeft: 1, date: "2026-07-31" },
+        ],
+      })
+    );
+    // ciclo = 01/07 → 31/07 com 6 comprados (não "desde 01/06" com 16)
+    expect(nextCheck.basis).toBe("check");
+    expect(nextCheck.quantity).toBe(4); // consumiu 5 em 30d → 5 − 1 de sobra
+  });
+
   it("sugere 0 quando nada foi consumido", () => {
     const s = calculateSuggestion(
       input({
