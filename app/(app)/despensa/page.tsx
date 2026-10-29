@@ -38,6 +38,20 @@ function ItemStatus({ item }: { item: ItemWithHistory }) {
   const depletedAfterCheck =
     lastDepletion && (!item.lastCheck || lastDepletion.depleted_at >= item.lastCheck.checked_at);
 
+  // Compra depois do último check/"acabou" (ou no mesmo dia: conferir e marcar
+  // "acabou" vêm antes de comprar) reabastece — o status antigo não vale mais.
+  const lastStatusDate = [lastDepletion?.depleted_at, item.lastCheck?.checked_at]
+    .filter((d): d is string => !!d)
+    .sort()
+    .at(-1);
+  if (item.lastPurchase && lastStatusDate && item.lastPurchase.purchased_at >= lastStatusDate) {
+    return (
+      <Badge variant="secondary">
+        comprado {formatQty(item.lastPurchase.quantity)} {item.unit}
+      </Badge>
+    );
+  }
+
   if (depletedAfterCheck) {
     return (
       <Badge className="bg-destructive/10 text-destructive">

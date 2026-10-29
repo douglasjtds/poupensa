@@ -74,6 +74,8 @@ function sumQty(events: PurchaseEvent[]): number {
  * - `prevCheck` é a última conferência ANTERIOR à última compra — ela fecha o
  *   ciclo anterior. O ciclo atual começa na primeira compra depois dela
  *   (reposições no meio do ciclo somam na quantidade comprada).
+ * - No mesmo dia, a conferência vem ANTES da compra: o fluxo normal é
+ *   conferir → gerar lista → comprar, tudo no dia da compra grande.
  * - Sem conferência anterior, o ciclo atual começa na primeira compra
  *   registrada (cobre o caso comum: estoque inicial + compra antes da
  *   primeira conferência).
@@ -87,13 +89,14 @@ export function calculateSuggestion(input: SuggestionInput): Suggestion {
 
   const lastPurchase = purchases[purchases.length - 1];
   const checksSorted = [...input.checks].sort((a, b) => a.date.localeCompare(b.date));
-  const prevCheck = [...checksSorted].reverse().find((c) => c.date < lastPurchase.date);
+  const prevCheck = [...checksSorted].reverse().find((c) => c.date <= lastPurchase.date);
 
   const cyclePurchases = prevCheck ? purchases.filter((p) => p.date >= prevCheck.date) : purchases;
   const cycleStart = cyclePurchases[0].date;
 
-  // Conferência do ciclo atual (a mais recente em/depois do início do ciclo).
-  const cycleChecks = checksSorted.filter((c) => c.date >= cycleStart);
+  // Conferência do ciclo atual: a mais recente depois da última compra (as do
+  // mesmo dia da compra já fecharam o ciclo anterior).
+  const cycleChecks = checksSorted.filter((c) => c.date > lastPurchase.date);
   const check = cycleChecks[cycleChecks.length - 1];
 
   // "Acabou" dentro do ciclo (antes da conferência, se ela existir).

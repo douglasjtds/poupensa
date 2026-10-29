@@ -16,6 +16,22 @@ export type ItemWithHistory = Item & {
   suggestion: Suggestion;
 };
 
+// O PostgREST corta cada resposta em 1000 linhas: pagina até esgotar e
+// propaga erro em vez de devolver histórico vazio (que viraria sugestão errada).
+const PAGE_SIZE = 1000;
+
+async function fetchAllRows<T>(
+  page: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: unknown }>
+): Promise<T[]> {
+  const rows: T[] = [];
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const { data, error } = await page(from, from + PAGE_SIZE - 1);
+    if (error) throw error;
+    rows.push(...(data ?? []));
+    if (!data || data.length < PAGE_SIZE) return rows;
+  }
+}
+
 export async function fetchItemsWithHistory(
   supabase: Supabase,
   householdId: string
@@ -29,16 +45,32 @@ export async function fetchItemsWithHistory(
   if (!items || items.length === 0) return [];
 
   const itemIds = items.map((i) => i.id);
-  const [{ data: purchases }, { data: checks }, { data: depletions }] = await Promise.all([
-    supabase.from("purchase_records").select("*").in("item_id", itemIds),
-    supabase.from("check_records").select("*").in("item_id", itemIds),
-    supabase.from("depleted_records").select("*").in("item_id", itemIds),
+  const [purchases, checks, depletions] = await Promise.all([
+    fetchAllRows((from, to) =>
+      supabase
+        .from("purchase_records")
+        .select("*")
+        .in("item_id", itemIds)
+        .order("id")
+        .range(from, to)
+    ),
+    fetchAllRows((from, to) =>
+      supabase.from("check_records").select("*").in("item_id", itemIds).order("id").range(from, to)
+    ),
+    fetchAllRows((from, to) =>
+      supabase
+        .from("depleted_records")
+        .select("*")
+        .in("item_id", itemIds)
+        .order("id")
+        .range(from, to)
+    ),
   ]);
 
   return items.map((item) => {
-    const itemPurchases = (purchases ?? []).filter((p) => p.item_id === item.id);
-    const itemChecks = (checks ?? []).filter((c) => c.item_id === item.id);
-    const itemDepletions = (depletions ?? []).filter((d) => d.item_id === item.id);
+    const itemPurchases = purchases.filter((p) => p.item_id === item.id);
+    const itemChecks = checks.filter((c) => c.item_id === item.id);
+    const itemDepletions = depletions.filter((d) => d.item_id === item.id);
     const byDateDesc = <T extends { created_at: string }>(a: T, b: T) =>
       b.created_at.localeCompare(a.created_at);
 
@@ -84,13 +116,19 @@ export async function createItem(
 
   // "Cadastro de item (nome, unidade, quantidade)": a quantidade inicial vira
   // um registro de compra de hoje, para o histórico já nascer coerente.
+  // Se a compra falhar, desfaz o item: senão a nova tentativa esbarra em
+  // "item já existe" e a quantidade inicial nunca é registrada.
   if (params.initialQuantity != null && params.initialQuantity > 0) {
     const { error: prError } = await supabase.from("purchase_records").insert({
       item_id: item.id,
       quantity: params.initialQuantity,
+      purchased_at: todayISO(),
       created_by: params.userId,
     });
-    if (prError) throw prError;
+    if (prError) {
+      await supabase.from("items").delete().eq("id", item.id);
+      throw prError;
+    }
   }
   return item;
 }
@@ -157,6 +195,8 @@ export async function recordDepleted(
   if (error) throw error;
 }
 
+/** Data de hoje (YYYY-MM-DD) no fuso do aparelho — toISOString() seria UTC. */
 export function todayISO(): string {
-  return new Date().toISOString().slice(0, 10);
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }

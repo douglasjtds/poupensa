@@ -38,7 +38,8 @@ RLS ao consultar `household_members`.
   autenticado como primeiro membro. Falha se o usuário já tem household.
 - `join_household_by_code(code text)` — entra pelo código de convite. Falha se
   código inválido, se o usuário já tem household, ou se o household já tem 2
-  membros.
+  membros (a linha do household é travada com `for update` antes da
+  contagem, para que resgates simultâneos não passem do limite — `00003`).
 
 Ambas `security definer` com `search_path = public`.
 
