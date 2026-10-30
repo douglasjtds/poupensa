@@ -44,3 +44,10 @@ next-env.d.ts
 
 # claude code
 /.claude/worktrees/
+
+# impeccable (reinstalar com: npx impeccable install)
+/.claude/agents/impeccable-*
+/.claude/skills/impeccable/
+/.github/agents/impeccable-*
+/.github/hooks/impeccable.json
+/.github/skills/impeccable/
