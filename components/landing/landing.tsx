@@ -191,8 +191,9 @@ function HeroList() {
 /** Cada frase do título em sua própria linha, sem alterar o texto. */
 function Sentences({ text, lastClassName }: { text: string; lastClassName?: string }) {
   const sentences = text.split(/(?<=\.)\s/);
+  // Lista estática: o índice é uma key estável e aceita frases repetidas.
   return sentences.map((sentence, index) => (
-    <span key={sentence} className={cn("block", index === sentences.length - 1 && lastClassName)}>
+    <span key={index} className={cn("block", index === sentences.length - 1 && lastClassName)}>
       {sentence}{" "}
     </span>
   ));
