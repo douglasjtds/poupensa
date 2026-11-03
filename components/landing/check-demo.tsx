@@ -23,9 +23,9 @@ const STRUCK_CLASS =
 const NAME_CLASS =
   "text-[clamp(30px,9.7vw,56px)] leading-[1.15] font-semibold tracking-[-0.03em] lg:text-[clamp(56px,4.7vw,76px)]";
 const QUANTITY_CLASS =
-  "text-right font-mono whitespace-nowrap text-[clamp(30px,9.7vw,56px)] leading-[1.15] font-semibold tracking-[-0.04em] [word-spacing:-0.3em] text-accent-hover lg:text-[clamp(56px,4.7vw,76px)]";
+  "text-right font-mono whitespace-nowrap text-[clamp(30px,9.7vw,56px)] leading-[1.15] font-medium tracking-[-0.04em] [word-spacing:-0.3em] text-accent-hover lg:text-[clamp(56px,4.7vw,76px)]";
 const SKIP_CLASS =
-  "text-right font-mono whitespace-nowrap text-[clamp(15px,5vw,32px)] font-semibold tracking-[-0.03em] [word-spacing:-0.3em] text-muted-foreground lg:text-[clamp(32px,2.8vw,44px)]";
+  "text-right font-mono whitespace-nowrap text-[clamp(15px,5vw,32px)] font-medium tracking-[-0.03em] [word-spacing:-0.3em] text-muted-foreground lg:text-[clamp(32px,2.8vw,44px)]";
 
 function resultFor(leftKg: number) {
   const nextKg = nextPurchase(demoStatic.boughtKg, leftKg, demoStatic.daysAgo);
@@ -77,8 +77,8 @@ export function CheckDemo({ className }: { className?: string }) {
   const labelId = useId();
 
   return (
-    <div data-slot="check-demo" className={cn("flex flex-col gap-4", className)}>
-      <div data-slot="check-demo-title" className="flex items-center justify-between gap-3">
+    <div data-slot="check-demo" className={cn("flex flex-col", className)}>
+      <div data-slot="check-demo-title" className="flex items-center justify-between gap-3 pb-2">
         <p className="text-sm font-semibold lg:text-base">
           <MonoQuantities text={demoIntro(demoStatic.boughtKg, demoStatic.daysAgo)} />
         </p>
@@ -109,12 +109,12 @@ export function CheckDemo({ className }: { className?: string }) {
         </p>
       </div>
 
-      <div data-slot="check-demo-control" className="flex flex-col gap-1">
+      <div data-slot="check-demo-control" className="flex flex-col gap-1 py-4">
         <div className="flex items-baseline justify-between gap-3">
-          <span id={labelId} data-slot="check-demo-label" className="text-sm font-medium">
+          <span id={labelId} data-slot="check-demo-label" className="text-base/5 font-medium">
             {demoStatic.control}
           </span>
-          <span data-slot="check-demo-left" className="font-mono text-sm">
+          <span data-slot="check-demo-left" className="font-mono text-xl/5 font-medium">
             {demoSliderValue(leftKg)}
           </span>
         </div>

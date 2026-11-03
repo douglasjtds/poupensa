@@ -64,33 +64,10 @@
   word-spacing: -0.3em;
 }
 
-/* ---------- CheckDemo: a linha do arroz, em fios ---------- */
-
-.lp-demo {
-  gap: 0;
-}
-
-[data-slot="check-demo-title"] {
-  padding-bottom: 8px;
-}
-
-/* A escala da linha vem das classes da própria demo, iguais às do hero. */
-[data-slot="check-demo-quantity"] {
-  font-weight: 500;
-}
-
-[data-slot="check-demo-control"] {
-  padding-block: 16px;
-}
-
-[data-slot="check-demo-label"] {
-  font-size: 16px;
-}
-
-[data-slot="check-demo-left"] {
-  font-size: 20px;
-  font-weight: 500;
-}
+/* ---------- CheckDemo: a linha do arroz, em fios ----------
+   Regras fora de @layer vencem as utilities do Tailwind; por isso aqui só
+   entra o que as classes de check-demo.tsx não definem. A exceção são as
+   partes do Slider (components/ui), que não recebem classes de fora. */
 
 .lp-demo [data-slot="slider-track"] {
   height: 4px;
