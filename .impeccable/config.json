@@ -1,0 +1,47 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "createdAt": "2026-10-30T20:00:18.906Z",
+        "reason": "instructions/DESIGN-GUIDELINES.md pins Geist as the project face"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist mono",
+        "createdAt": "2026-10-30T20:00:19.008Z",
+        "reason": "instructions/DESIGN-GUIDELINES.md pins Geist Mono for quantities"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/conta-armada.html"
+        ],
+        "createdAt": "2026-10-30T20:00:19.089Z",
+        "reason": "instructions/DESIGN-GUIDELINES.md pins the lilac brand accent; sketch uses it flat, no gradient"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/prateleira.html"
+        ],
+        "createdAt": "2026-10-30T20:00:19.167Z",
+        "reason": "instructions/DESIGN-GUIDELINES.md pins the lilac brand accent; sketch uses it flat, no gradient"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/lista-reescrita.html"
+        ],
+        "createdAt": "2026-10-30T20:00:19.243Z",
+        "reason": "instructions/DESIGN-GUIDELINES.md pins the lilac brand accent; sketch uses it flat, no gradient"
+      }
+    ]
+  }
+}
