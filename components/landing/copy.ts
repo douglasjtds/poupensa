@@ -90,7 +90,11 @@ export interface HowItWorksCopy {
   support: string;
 }
 
+export type FeatureId = "shared-pantry" | "auto-calc" | "voice" | "list-control" | "depletion";
+
 export interface Feature {
+  /** Chave estável para o ícone e a key do React; não aparece na tela. */
+  id: FeatureId;
   title: string;
   text: string;
 }
@@ -237,22 +241,27 @@ export const features: FeaturesCopy = {
   title: "O que vocês encontram no app",
   items: [
     {
+      id: "shared-pantry",
       title: "Despensa compartilhada",
       text: "Vocês dois veem e editam a mesma despensa, cada um no seu celular.",
     },
     {
+      id: "auto-calc",
       title: "Cálculo automático",
       text: "A sugestão vem do consumo de cada item na casa de vocês, não de uma média genérica.",
     },
     {
+      id: "voice",
       title: "Fale em vez de digitar",
       text: "Com as mãos ocupadas, ditem itens e quantidades e confiram antes de salvar. Funciona nos navegadores com reconhecimento de voz.",
     },
     {
+      id: "list-control",
       title: "Lista que vocês controlam",
       text: "Marquem, desmarquem e ajustem as quantidades antes de finalizar.",
     },
     {
+      id: "depletion",
       title: "Acabou antes da hora?",
       text: "Se quiserem, registrem o dia em que o item acabou, e o cálculo fica mais preciso.",
     },

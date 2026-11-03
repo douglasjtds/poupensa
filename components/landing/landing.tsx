@@ -24,6 +24,7 @@ import {
   howItWorks,
   problem,
   solution,
+  type FeatureId,
   type StepExample,
 } from "@/components/landing/copy";
 import { nextPurchase } from "@/lib/landing-example";
@@ -46,8 +47,14 @@ const CTA = cn(
 const STRUCK =
   "text-[clamp(20px,6.2vw,28px)] leading-tight tracking-[-0.02em] text-muted-foreground";
 
-// Mesma ordem da lista em features.items.
-const FEATURE_ICONS: readonly LucideIcon[] = [Users, Calculator, Mic, ListChecks, CalendarX2];
+// Indexado pelo id: o tipo obriga um ícone para cada feature, em qualquer ordem.
+const FEATURE_ICONS: Record<FeatureId, LucideIcon> = {
+  "shared-pantry": Users,
+  "auto-calc": Calculator,
+  voice: Mic,
+  "list-control": ListChecks,
+  depletion: CalendarX2,
+};
 
 // Server Component; só a demo (CheckDemo) roda no cliente.
 export function Landing() {
@@ -305,22 +312,25 @@ function StepExampleRow({ example }: { example: StepExample }) {
 
 function Features() {
   const [first, second, ...rest] = features.items;
-  const restIcons = FEATURE_ICONS.slice(2);
   return (
     <section className={cn(WRAP, "pb-14 lg:pb-28")}>
       <h2 className={H2}>{features.title}</h2>
       <ul className="mt-8 grid border-b border-border lg:mt-14 lg:grid-cols-12">
-        <FeatureLarge {...first} Icon={FEATURE_ICONS[0]} className="lg:col-span-7 lg:pr-14" />
+        <FeatureLarge
+          {...first}
+          Icon={FEATURE_ICONS[first.id]}
+          className="lg:col-span-7 lg:pr-14"
+        />
         <FeatureLarge
           {...second}
-          Icon={FEATURE_ICONS[1]}
+          Icon={FEATURE_ICONS[second.id]}
           className="lg:col-span-5 lg:border-l lg:pl-8"
         />
-        {rest.map((feature, index) => {
-          const Icon = restIcons[index];
+        {rest.map((feature) => {
+          const Icon = FEATURE_ICONS[feature.id];
           return (
             <li
-              key={feature.title}
+              key={feature.id}
               className="grid grid-cols-[1.5rem_1fr] gap-x-3 border-t border-border py-4 lg:col-span-12 lg:grid-cols-subgrid lg:items-baseline lg:gap-x-0"
             >
               <span className="flex items-baseline gap-3 max-lg:contents lg:col-span-7 lg:pr-14">
