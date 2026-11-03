@@ -34,7 +34,8 @@ export async function proxy(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const { pathname } = request.nextUrl;
-  const isPublic = PUBLIC_PATHS.some((p) => pathname.startsWith(p));
+  // Casa o segmento inteiro: "/termos" e "/termos/x", nunca "/termos-aceite".
+  const isPublic = PUBLIC_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 
   // Logado na raiz vai direto para a despensa (o PWA abre em start_url "/").
   // Os cookies renovados acima estão em `response` e precisam ir no redirect,
