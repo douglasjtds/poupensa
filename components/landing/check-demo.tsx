@@ -35,19 +35,25 @@ function resultFor(leftKg: number) {
 // Estado da demo: o que sobrou e o último valor substituído; o resto deriva do
 // cálculo real. `struck` nulo significa que ainda vale o chute inicial.
 function useCheckDemo() {
-  const [leftKg, setLeftKg] = useState(INITIAL_LEFT_KG);
-  const [struck, setStruck] = useState<string | null>(null);
-  const result = resultFor(leftKg);
+  const [state, setState] = useState<{ leftKg: number; struck: string | null }>({
+    leftKg: INITIAL_LEFT_KG,
+    struck: null,
+  });
+  const result = resultFor(state.leftKg);
 
+  // Update funcional: dois eventos antes de um render (arrasto rápido) comparam
+  // cada um com o valor anterior real, não com o do último render.
   function changeLeft(nextLeftKg: number) {
-    // Entre dois "pode pular" nada foi reescrito: o riscado continua o mesmo.
-    if (resultFor(nextLeftKg).shortQuantity !== result.shortQuantity) {
-      setStruck(result.shortQuantity);
-    }
-    setLeftKg(nextLeftKg);
+    setState((prev) => {
+      if (nextLeftKg === prev.leftKg) return prev;
+      const before = resultFor(prev.leftKg).shortQuantity;
+      // Entre dois "pode pular" nada foi reescrito: o riscado continua o mesmo.
+      const struck = resultFor(nextLeftKg).shortQuantity !== before ? before : prev.struck;
+      return { leftKg: nextLeftKg, struck };
+    });
   }
 
-  return { leftKg, changeLeft, result, struck };
+  return { leftKg: state.leftKg, changeLeft, result, struck: state.struck };
 }
 
 /** Destaca as quantidades de uma frase em fonte mono, sem alterar o texto. */
