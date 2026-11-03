@@ -27,6 +27,12 @@ import {
   type FeatureId,
   type StepExample,
 } from "@/components/landing/copy";
+import {
+  NAME_CLASS,
+  QUANTITY_CLASS,
+  SKIP_CLASS,
+  STRUCK_CLASS,
+} from "@/components/landing/line-classes";
 import { nextPurchase } from "@/lib/landing-example";
 import { cn } from "@/lib/utils";
 import "./landing.css";
@@ -42,10 +48,6 @@ const CTA = cn(
   "inline-flex h-[54px] items-center justify-center rounded-[10px] bg-primary px-8 text-[17px] font-semibold text-primary-foreground transition-colors hover:bg-primary-hover",
   FOCUS
 );
-
-// O chute riscado: a mesma escala no hero e no Problem.
-const STRUCK =
-  "text-[clamp(20px,6.2vw,28px)] leading-tight tracking-[-0.02em] text-muted-foreground";
 
 // Indexado pelo id: o tipo obriga um ícone para cada feature, em qualquer ordem.
 const FEATURE_ICONS: Record<FeatureId, LucideIcon> = {
@@ -158,7 +160,7 @@ function HeroList() {
               className="grid border-t border-border py-2 lg:grid-cols-[1fr_1.25fr_1fr] lg:items-center lg:gap-x-8 lg:py-3"
             >
               <div>
-                <p className={STRUCK}>
+                <p className={STRUCK_CLASS}>
                   <s className="lp-strike lp-strike-draw">{item.guess}</s>
                 </p>
                 <p className="hidden pt-1 text-sm text-muted-foreground lg:block">
@@ -170,17 +172,11 @@ function HeroList() {
                 </p>
               </div>
               <p className="flex items-baseline justify-between gap-2 lg:contents">
-                <span className="text-[clamp(30px,9.7vw,56px)] leading-[1.15] font-semibold tracking-[-0.03em] lg:text-[clamp(56px,4.7vw,76px)]">
-                  {item.name}
-                </span>
+                <span className={NAME_CLASS}>{item.name}</span>
                 {next > 0 ? (
-                  <span className="text-right font-mono whitespace-nowrap text-[clamp(30px,9.7vw,56px)] leading-[1.15] font-medium tracking-[-0.04em] [word-spacing:-0.3em] text-accent-hover lg:text-[clamp(56px,4.7vw,76px)]">
-                    {formatQuantity(next, item.unit)}
-                  </span>
+                  <span className={QUANTITY_CLASS}>{formatQuantity(next, item.unit)}</span>
                 ) : (
-                  <span className="text-right font-mono whitespace-nowrap text-[clamp(15px,5vw,32px)] font-medium tracking-[-0.03em] [word-spacing:-0.3em] text-muted-foreground lg:text-[clamp(32px,2.8vw,44px)]">
-                    {heroList.skipLabel}
-                  </span>
+                  <span className={SKIP_CLASS}>{heroList.skipLabel}</span>
                 )}
               </p>
             </li>
@@ -214,7 +210,7 @@ function Problem() {
             key={item.text}
             className="grid gap-y-1 border-t border-border py-4 lg:grid-cols-[1fr_1.25fr_1fr] lg:items-baseline lg:gap-x-8 lg:py-7"
           >
-            <p className={STRUCK}>
+            <p className={STRUCK_CLASS}>
               <s className="lp-strike">{item.guess}</s>
             </p>
             <p className="text-[22px] leading-[1.2] font-medium tracking-[-0.02em] text-pretty lg:col-span-2 lg:text-[36px]">

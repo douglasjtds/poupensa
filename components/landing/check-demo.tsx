@@ -9,6 +9,12 @@ import {
   demoStatic,
   heroList,
 } from "@/components/landing/copy";
+import {
+  NAME_CLASS,
+  QUANTITY_CLASS,
+  SKIP_CLASS,
+  STRUCK_CLASS,
+} from "@/components/landing/line-classes";
 import { nextPurchase } from "@/lib/landing-example";
 import { cn } from "@/lib/utils";
 
@@ -16,16 +22,6 @@ const INITIAL_LEFT_KG = 1;
 const SLIDER_FORMAT: Intl.NumberFormatOptions = { style: "unit", unit: "kilogram" };
 /** O chute do arroz, o mesmo da lista do hero, é o primeiro valor riscado. */
 const INITIAL_GUESS = heroList.items[0].guess;
-
-// Mesma anatomia e escala das linhas da lista do hero (landing.tsx).
-const STRUCK_CLASS =
-  "text-[clamp(20px,6.2vw,28px)] leading-tight tracking-[-0.02em] text-muted-foreground";
-const NAME_CLASS =
-  "text-[clamp(30px,9.7vw,56px)] leading-[1.15] font-semibold tracking-[-0.03em] lg:text-[clamp(56px,4.7vw,76px)]";
-const QUANTITY_CLASS =
-  "text-right font-mono whitespace-nowrap text-[clamp(30px,9.7vw,56px)] leading-[1.15] font-medium tracking-[-0.04em] [word-spacing:-0.3em] text-accent-hover lg:text-[clamp(56px,4.7vw,76px)]";
-const SKIP_CLASS =
-  "text-right font-mono whitespace-nowrap text-[clamp(15px,5vw,32px)] font-medium tracking-[-0.03em] [word-spacing:-0.3em] text-muted-foreground lg:text-[clamp(32px,2.8vw,44px)]";
 
 function resultFor(leftKg: number) {
   const nextKg = nextPurchase(demoStatic.boughtKg, leftKg, demoStatic.daysAgo);
