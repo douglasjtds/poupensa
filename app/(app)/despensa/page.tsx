@@ -20,16 +20,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import type { ItemWithHistory } from "@/lib/data";
+import { formatDecimal } from "@/lib/format";
 import type { Item } from "@/types/database";
-
-function formatQty(n: number): string {
-  return Number.isInteger(n)
-    ? String(n)
-    : n
-        .toFixed(2)
-        .replace(/\.?0+$/, "")
-        .replace(".", ",");
-}
 
 function ItemStatus({ item }: { item: ItemWithHistory }) {
   const lastDepletion = [...item.depletions].sort((a, b) =>
@@ -47,7 +39,7 @@ function ItemStatus({ item }: { item: ItemWithHistory }) {
   if (item.lastPurchase && lastStatusDate && item.lastPurchase.purchased_at >= lastStatusDate) {
     return (
       <Badge variant="secondary">
-        comprado {formatQty(item.lastPurchase.quantity)} {item.unit}
+        comprado {formatDecimal(item.lastPurchase.quantity)} {item.unit}
       </Badge>
     );
   }
@@ -67,14 +59,14 @@ function ItemStatus({ item }: { item: ItemWithHistory }) {
     }
     return (
       <Badge variant="secondary">
-        sobrou {formatQty(left)} {item.unit}
+        sobrou {formatDecimal(left)} {item.unit}
       </Badge>
     );
   }
   if (item.lastPurchase) {
     return (
       <Badge variant="secondary">
-        comprado {formatQty(item.lastPurchase.quantity)} {item.unit}
+        comprado {formatDecimal(item.lastPurchase.quantity)} {item.unit}
       </Badge>
     );
   }

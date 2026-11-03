@@ -1,9 +1,13 @@
 /**
  * Copy da landing page do Poupensa (pt-BR).
- * Sem React e sem imports. Quantidades calculadas nunca aparecem como texto
+ * Sem React. Quantidades calculadas nunca aparecem como texto
  * fixo: a lista do hero e a demo expõem números de compra e sobra, e quem
  * renderiza calcula a sugestão com `calculateSuggestion`.
  */
+
+import { formatDecimal, type Unit } from "@/lib/format";
+
+export { formatQuantity, type Unit } from "@/lib/format";
 
 // ---------- Tipos ----------
 
@@ -12,11 +16,6 @@ export interface HeaderCopy {
   howItWorks: string;
   login: string;
   cta: string;
-}
-
-export interface Unit {
-  singular: string;
-  plural: string;
 }
 
 export interface HeroListItem {
@@ -125,18 +124,6 @@ export interface FooterCopy {
   privacy: string;
   terms: string;
   copyright: string;
-}
-
-// ---------- Formatação ----------
-
-/** Número em pt-BR: vírgula decimal, sem zeros sobrando. */
-export function formatNumber(value: number): string {
-  return String(Math.round(value * 100) / 100).replace(".", ",");
-}
-
-/** Ex.: formatQuantity(2, { singular: "caixa", plural: "caixas" }) => "2 caixas". */
-export function formatQuantity(value: number, unit: Unit): string {
-  return `${formatNumber(value)} ${value === 1 ? unit.singular : unit.plural}`;
 }
 
 // ---------- Seções ----------
@@ -331,12 +318,12 @@ export const demoStatic = {
 
 /** Ex.: "5 kg de arroz comprados há 30 dias". */
 export function demoIntro(boughtKg: number, daysAgo: number): string {
-  return `${formatNumber(boughtKg)} kg de arroz comprados há ${daysAgo} dias`;
+  return `${formatDecimal(boughtKg)} kg de arroz comprados há ${daysAgo} dias`;
 }
 
 /** Valor anunciado pelo slider. Ex.: "2 kg". */
 export function demoSliderValue(leftKg: number): string {
-  return `${formatNumber(leftKg)} kg`;
+  return `${formatDecimal(leftKg)} kg`;
 }
 
 export interface DemoResult {
@@ -361,15 +348,15 @@ export function demoResult(boughtKg: number, leftKg: number, nextKg: number): De
     const lead = "Neste mês, pode pular o arroz.";
     return { lead, suggestion: null, shortQuantity: heroList.skipLabel, text: lead };
   }
-  const suggestion = `Próxima compra: ${formatNumber(nextKg)} kg`;
+  const suggestion = `Próxima compra: ${formatDecimal(nextKg)} kg`;
   const lead =
     leftKg <= 0
       ? "Acabou antes da hora."
-      : `Vocês usaram ${formatNumber(Math.max(boughtKg - leftKg, 0))} kg e ainda têm ${formatNumber(leftKg)} kg.`;
+      : `Vocês usaram ${formatDecimal(Math.max(boughtKg - leftKg, 0))} kg e ainda têm ${formatDecimal(leftKg)} kg.`;
   return {
     lead,
     suggestion,
-    shortQuantity: `${formatNumber(nextKg)} kg`,
+    shortQuantity: `${formatDecimal(nextKg)} kg`,
     text: `${lead} ${suggestion}.`,
   };
 }
