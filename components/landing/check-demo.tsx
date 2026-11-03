@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import {
   demoIntro,
@@ -13,6 +13,7 @@ import { nextPurchase } from "@/lib/landing-example";
 import { cn } from "@/lib/utils";
 
 const INITIAL_LEFT_KG = 1;
+const SLIDER_FORMAT: Intl.NumberFormatOptions = { style: "unit", unit: "kilogram" };
 /** O chute do arroz, o mesmo da lista do hero, é o primeiro valor riscado. */
 const INITIAL_GUESS = heroList.items[0].guess;
 
@@ -68,15 +69,6 @@ function MonoQuantities({ text }: { text: string }) {
 export function CheckDemo({ className }: { className?: string }) {
   const { leftKg, changeLeft, result, struck } = useCheckDemo();
   const labelId = useId();
-  const sliderRef = useRef<HTMLDivElement>(null);
-
-  // O wrapper de components/ui/slider.tsx não repassa props ao Thumb, onde fica
-  // o aria-valuetext; por isso o texto é aplicado direto no input do controle.
-  useEffect(() => {
-    sliderRef.current
-      ?.querySelector('input[type="range"]')
-      ?.setAttribute("aria-valuetext", demoSliderValue(leftKg));
-  }, [leftKg]);
 
   return (
     <div data-slot="check-demo" className={cn("flex flex-col gap-4", className)}>
@@ -121,19 +113,18 @@ export function CheckDemo({ className }: { className?: string }) {
           </span>
         </div>
         {/* Alvo de toque ≥ 44px: altura do Control e área do Thumb (22 + 2 × 12). */}
-        <div ref={sliderRef}>
-          <Slider
-            aria-labelledby={labelId}
-            min={0}
-            max={5}
-            step={1}
-            value={[leftKg]}
-            onValueChange={(value) =>
-              changeLeft(Array.isArray(value) ? value[0] : (value as number))
-            }
-            className="[&_[data-slot=slider-thumb]]:size-6 [&_[data-slot=slider-thumb]]:after:-inset-3 [&>div]:min-h-11"
-          />
-        </div>
+        {/* format + locale geram o aria-valuetext do Thumb ("1 kg"), sem tocar no DOM. */}
+        <Slider
+          aria-labelledby={labelId}
+          format={SLIDER_FORMAT}
+          locale="pt-BR"
+          min={0}
+          max={5}
+          step={1}
+          value={[leftKg]}
+          onValueChange={(value) => changeLeft(Array.isArray(value) ? value[0] : (value as number))}
+          className="[&_[data-slot=slider-thumb]]:size-6 [&_[data-slot=slider-thumb]]:after:-inset-3 [&>div]:min-h-11"
+        />
       </div>
 
       {/* O conteúdo desta região é exatamente result.text; o lilás é só visual. */}
