@@ -1,0 +1,473 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-30T22:32:00+00:00",
+  "title": "Design System: Poupensa",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Verde Ação",
+        "canonical": "#188345",
+        "tonalRamp": [
+          "oklch(15% 0.053 152)",
+          "oklch(26% 0.114 152)",
+          "oklch(38% 0.133 152)",
+          "oklch(49% 0.133 152)",
+          "oklch(61% 0.133 152)",
+          "oklch(72% 0.133 152)",
+          "oklch(84% 0.087 152)",
+          "oklch(95% 0.027 152)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Verde Ação Fundo",
+        "canonical": "#146c39",
+        "tonalRamp": [
+          "oklch(15% 0.046 152)",
+          "oklch(26% 0.098 152)",
+          "oklch(38% 0.114 152)",
+          "oklch(49% 0.114 152)",
+          "oklch(61% 0.114 152)",
+          "oklch(72% 0.114 152)",
+          "oklch(84% 0.075 152)",
+          "oklch(95% 0.023 152)"
+        ]
+      },
+      "primary-foreground": {
+        "role": "neutral",
+        "displayName": "Branco sobre Verde",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.000 90)",
+          "oklch(26% 0.000 90)",
+          "oklch(38% 0.000 90)",
+          "oklch(49% 0.000 90)",
+          "oklch(61% 0.000 90)",
+          "oklch(72% 0.000 90)",
+          "oklch(84% 0.000 90)",
+          "oklch(95% 0.000 90)"
+        ]
+      },
+      "brand-green": {
+        "role": "primary",
+        "displayName": "Verde da Marca",
+        "canonical": "#1f9d55",
+        "tonalRamp": [
+          "oklch(15% 0.060 152)",
+          "oklch(26% 0.129 152)",
+          "oklch(38% 0.150 152)",
+          "oklch(49% 0.150 152)",
+          "oklch(61% 0.150 152)",
+          "oklch(72% 0.150 152)",
+          "oklch(84% 0.099 152)",
+          "oklch(95% 0.030 152)"
+        ]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Lilás da Marca",
+        "canonical": "#8b5cf6",
+        "tonalRamp": [
+          "oklch(15% 0.088 293)",
+          "oklch(26% 0.188 293)",
+          "oklch(38% 0.219 293)",
+          "oklch(49% 0.219 293)",
+          "oklch(61% 0.219 293)",
+          "oklch(72% 0.219 293)",
+          "oklch(84% 0.144 293)",
+          "oklch(95% 0.044 293)"
+        ]
+      },
+      "accent-hover": {
+        "role": "secondary",
+        "displayName": "Lilás Calculado",
+        "canonical": "#7c3aed",
+        "tonalRamp": [
+          "oklch(15% 0.099 293)",
+          "oklch(26% 0.211 293)",
+          "oklch(38% 0.247 293)",
+          "oklch(49% 0.247 293)",
+          "oklch(61% 0.247 293)",
+          "oklch(72% 0.247 293)",
+          "oklch(84% 0.162 293)",
+          "oklch(95% 0.049 293)"
+        ]
+      },
+      "accent-foreground": {
+        "role": "neutral",
+        "displayName": "Branco sobre Lilás",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.000 90)",
+          "oklch(26% 0.000 90)",
+          "oklch(38% 0.000 90)",
+          "oklch(49% 0.000 90)",
+          "oklch(61% 0.000 90)",
+          "oklch(72% 0.000 90)",
+          "oklch(84% 0.000 90)",
+          "oklch(95% 0.000 90)"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Papel",
+        "canonical": "#fafaf9",
+        "tonalRamp": [
+          "oklch(15% 0.001 106)",
+          "oklch(26% 0.001 106)",
+          "oklch(38% 0.001 106)",
+          "oklch(49% 0.001 106)",
+          "oklch(61% 0.001 106)",
+          "oklch(72% 0.001 106)",
+          "oklch(84% 0.001 106)",
+          "oklch(95% 0.000 106)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#1c1917",
+        "tonalRamp": [
+          "oklch(15% 0.002 56)",
+          "oklch(26% 0.005 56)",
+          "oklch(38% 0.006 56)",
+          "oklch(49% 0.006 56)",
+          "oklch(61% 0.006 56)",
+          "oklch(72% 0.006 56)",
+          "oklch(84% 0.004 56)",
+          "oklch(95% 0.001 56)"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Branco de Superfície",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.000 90)",
+          "oklch(26% 0.000 90)",
+          "oklch(38% 0.000 90)",
+          "oklch(49% 0.000 90)",
+          "oklch(61% 0.000 90)",
+          "oklch(72% 0.000 90)",
+          "oklch(84% 0.000 90)",
+          "oklch(95% 0.000 90)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Névoa",
+        "canonical": "#f5f5f4",
+        "tonalRamp": [
+          "oklch(15% 0.001 106)",
+          "oklch(26% 0.001 106)",
+          "oklch(38% 0.001 106)",
+          "oklch(49% 0.001 106)",
+          "oklch(61% 0.001 106)",
+          "oklch(72% 0.001 106)",
+          "oklch(84% 0.001 106)",
+          "oklch(95% 0.000 106)"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Tinta Lavada",
+        "canonical": "#78716c",
+        "tonalRamp": [
+          "oklch(15% 0.005 58)",
+          "oklch(26% 0.010 58)",
+          "oklch(38% 0.012 58)",
+          "oklch(49% 0.012 58)",
+          "oklch(61% 0.012 58)",
+          "oklch(72% 0.012 58)",
+          "oklch(84% 0.008 58)",
+          "oklch(95% 0.002 58)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Fio",
+        "canonical": "#e7e5e4",
+        "tonalRamp": [
+          "oklch(15% 0.001 49)",
+          "oklch(26% 0.002 49)",
+          "oklch(38% 0.003 49)",
+          "oklch(49% 0.003 49)",
+          "oklch(61% 0.003 49)",
+          "oklch(72% 0.003 49)",
+          "oklch(84% 0.002 49)",
+          "oklch(95% 0.001 49)"
+        ]
+      },
+      "destructive": {
+        "role": "tertiary",
+        "displayName": "Falta",
+        "canonical": "#dc2626",
+        "tonalRamp": [
+          "oklch(15% 0.086 27)",
+          "oklch(26% 0.184 27)",
+          "oklch(38% 0.215 27)",
+          "oklch(49% 0.215 27)",
+          "oklch(61% 0.215 27)",
+          "oklch(72% 0.215 27)",
+          "oklch(84% 0.141 27)",
+          "oklch(95% 0.043 27)"
+        ]
+      },
+      "accent-tint": {
+        "role": "secondary",
+        "displayName": "Véu Lilás",
+        "canonical": "rgb(139 92 246 / 0.1)"
+      },
+      "destructive-tint": {
+        "role": "tertiary",
+        "displayName": "Véu de Falta",
+        "canonical": "rgb(220 38 38 / 0.1)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "H1 e bloco final da landing; 44px no mobile, clamp(56px, 5.5vw, 84px) no desktop."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de seção da landing; 32px no mobile, 56px no desktop."
+      },
+      "list-name": {
+        "displayName": "List Name",
+        "purpose": "Nome do item na lista reescrita."
+      },
+      "quantity": {
+        "displayName": "Quantity",
+        "purpose": "Quantidade calculada na lista reescrita, em Geist Mono."
+      },
+      "struck": {
+        "displayName": "Struck",
+        "purpose": "Chute riscado."
+      },
+      "page-title": {
+        "displayName": "Page Title",
+        "purpose": "Título de tela no app."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Título de card e nome de item no app."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Botões, rótulos e metadados."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Selo, badges e notas; piso de 12px."
+      }
+    },
+    "shadows": [
+      {
+        "name": "thumb",
+        "value": "0 2px 8px rgba(28, 25, 23, 0.08)",
+        "purpose": "Polegar do controle da demo, via --shadow-md."
+      },
+      {
+        "name": "menu",
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "purpose": "Menu do select."
+      },
+      {
+        "name": "floating",
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "purpose": "Banner de instalação do PWA; teto da escala."
+      },
+      {
+        "name": "card-ring",
+        "value": "0 0 0 1px rgb(28 25 23 / 0.1)",
+        "purpose": "Anel de cards e diálogos no lugar de sombra."
+      }
+    ],
+    "motion": [
+      {
+        "name": "strike-draw",
+        "value": "800ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Risco traçado uma vez ao entrar no hero, com atrasos de 200, 420 e 640ms."
+      },
+      {
+        "name": "strike-response",
+        "value": "240ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Risco da demo, em resposta ao arrasto, sem atraso."
+      },
+      {
+        "name": "disclosure",
+        "value": "200ms",
+        "purpose": "Rotação do chevron no FAQ; desligada com reduced-motion."
+      },
+      {
+        "name": "press",
+        "value": "translateY(1px)",
+        "purpose": "Afundamento dos botões do app ao pressionar."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "short-phone",
+        "value": "(max-height: 720px)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão primário",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal no app, com 44px de altura mínima.",
+      "html": "<button class=\"ds-btn-primary\">Registrar compra</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-family: var(--font-geist-sans, Geist, ui-sans-serif, system-ui, sans-serif); cursor: pointer; white-space: nowrap; transition: background-color 150ms, color 150ms; height: 44px; padding: 0 10px; border: 1px solid transparent; border-radius: 16px; background: var(--primary, #188345); color: var(--primary-foreground, #fff); font-size: 14px; font-weight: 500; } .ds-btn-primary:hover { background: var(--primary-hover, #146c39); } .ds-btn-primary:focus-visible { outline: none; border-color: var(--ring, #188345); box-shadow: 0 0 0 3px rgb(24 131 69 / 0.5); } .ds-btn-primary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Botão outline",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Ação secundária no app, sobre Papel e com fio.",
+      "html": "<button class=\"ds-btn-outline\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg>Novo item</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-family: var(--font-geist-sans, Geist, ui-sans-serif, system-ui, sans-serif); cursor: pointer; white-space: nowrap; transition: background-color 150ms, color 150ms; height: 44px; padding: 0 10px; border: 1px solid var(--border, #e7e5e4); border-radius: 16px; background: var(--background, #fafaf9); color: var(--foreground, #1c1917); font-size: 14px; font-weight: 500; } .ds-btn-outline:hover { background: var(--muted, #f5f5f4); } .ds-btn-outline:focus-visible { outline: none; border-color: var(--ring, #188345); box-shadow: 0 0 0 3px rgb(24 131 69 / 0.5); } .ds-btn-outline:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "CTA da landing",
+      "kind": "button",
+      "refersTo": "landing-cta",
+      "description": "Chamada de cadastro, com 54px no mobile e 60px no desktop.",
+      "html": "<a class=\"ds-cta\" href=\"#\">Começar grátis</a>",
+      "css": ".ds-cta { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-family: var(--font-geist-sans, Geist, ui-sans-serif, system-ui, sans-serif); cursor: pointer; white-space: nowrap; transition: background-color 150ms, color 150ms; height: 54px; padding: 0 32px; border-radius: 10px; background: var(--primary, #188345); color: var(--primary-foreground, #fff); font-size: 17px; font-weight: 600; text-decoration: none; } .ds-cta:hover { background: var(--primary-hover, #146c39); } .ds-cta:focus-visible { outline: 2px solid var(--primary, #188345); outline-offset: 2px; }"
+    },
+    {
+      "name": "Campo de quantidade",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Input decimal com a unidade ancorada dentro do campo.",
+      "html": "<label class=\"ds-qty\"><input class=\"ds-input\" inputmode=\"decimal\" value=\"3\" aria-label=\"Quantidade de arroz\"><span class=\"ds-qty-unit\" aria-hidden=\"true\">kg</span></label>",
+      "css": ".ds-qty { position: relative; display: block; width: 220px; } .ds-input { width: 100%; height: 44px; padding: 4px 56px 4px 10px; border: 1px solid var(--input, #e7e5e4); border-radius: 16px; background: transparent; color: var(--foreground, #1c1917); font: 400 16px var(--font-geist-sans, Geist, ui-sans-serif, system-ui, sans-serif); outline: none; transition: border-color 150ms, box-shadow 150ms; } .ds-input:focus-visible { border-color: var(--ring, #188345); box-shadow: 0 0 0 3px rgb(24 131 69 / 0.5); } .ds-qty-unit { position: absolute; top: 0; bottom: 0; right: 12px; display: flex; align-items: center; color: var(--muted-foreground, #78716c); font-size: 14px; pointer-events: none; }"
+    },
+    {
+      "name": "Card de item com sugestão",
+      "kind": "card",
+      "refersTo": "card-compact",
+      "description": "Linha da lista no app: card compacto, anel de 10% e badge lilás.",
+      "html": "<div class=\"ds-card\"><span class=\"ds-card-name\">Arroz</span><span class=\"ds-badge-suggestion\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z\"/><path d=\"M20 2v4\"/><path d=\"M22 4h-4\"/><circle cx=\"4\" cy=\"20\" r=\"2\"/></svg>3 kg · consumo real</span></div>",
+      "css": ".ds-card { display: flex; align-items: center; gap: 12px; width: 320px; padding: 12px; border-radius: 22.4px; background: var(--card, #fff); color: var(--card-foreground, #1c1917); box-shadow: 0 0 0 1px rgb(28 25 23 / 0.1); font-size: 14px; } .ds-card-name { flex: 1; font-weight: 500; } .ds-badge-suggestion { display: inline-flex; align-items: center; gap: 4px; height: 20px; padding: 2px 8px; border-radius: 9999px; background: rgb(139 92 246 / 0.1); color: var(--accent-hover, #7c3aed); font-size: 12px; font-weight: 500; white-space: nowrap; }"
+    },
+    {
+      "name": "Selo Exemplo",
+      "kind": "chip",
+      "refersTo": "chip-example",
+      "description": "Identifica dados de demonstração.",
+      "html": "<span class=\"ds-chip\">Exemplo</span>",
+      "css": ".ds-chip { display: inline-block; padding: 2px 8px; border: 1px solid var(--border, #e7e5e4); border-radius: 6px; color: var(--muted-foreground, #78716c); font-size: 12px; line-height: 16px; }"
+    },
+    {
+      "name": "Navegação inferior",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "Barra fixa do app, com o destino ativo em Verde Ação.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Exemplo de navegação\"><a class=\"ds-nav-item\" href=\"#\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"20\" height=\"5\" x=\"2\" y=\"3\" rx=\"1\"/><path d=\"M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8\"/><path d=\"M10 12h4\"/></svg>Despensa</a><a class=\"ds-nav-item\" href=\"#\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"21\" r=\"1\"/><circle cx=\"19\" cy=\"21\" r=\"1\"/><path d=\"M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12\"/></svg>Compra</a><a class=\"ds-nav-item\" href=\"#\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M13 5h8\"/><path d=\"M13 12h8\"/><path d=\"M13 19h8\"/><path d=\"m3 17 2 2 4-4\"/><path d=\"m3 7 2 2 4-4\"/></svg>Lista</a></nav>",
+      "css": ".ds-nav { display: flex; width: 320px; border-top: 1px solid var(--border, #e7e5e4); background: var(--card, #fff); } .ds-nav-item { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 56px; color: var(--muted-foreground, #78716c); font-size: 12px; font-weight: 500; text-decoration: none; } .ds-nav-item[aria-current='page'] { color: var(--primary, #188345); } .ds-nav-item:focus-visible { outline: 2px solid var(--primary, #188345); outline-offset: -2px; }"
+    },
+    {
+      "name": "Logo",
+      "kind": "custom",
+      "description": "Tile lilás com a folha e o nome em tinta e verde.",
+      "html": "<a class=\"ds-logo\" href=\"#\" aria-label=\"Poupensa\"><span class=\"ds-logo-tile\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z\"/><path d=\"M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12\"/></svg></span><span class=\"ds-logo-name\">Pou<span class=\"ds-logo-green\">pensa</span></span></a>",
+      "css": ".ds-logo { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; } .ds-logo-tile { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 22.4px; background: var(--accent, #8b5cf6); color: var(--accent-foreground, #fff); } .ds-logo-name { color: var(--foreground, #1c1917); font-size: 24px; font-weight: 700; letter-spacing: -0.025em; } .ds-logo-green { color: var(--primary, #188345); } .ds-logo:focus-visible { outline: 2px solid var(--primary, #188345); outline-offset: 2px; border-radius: 10px; }"
+    },
+    {
+      "name": "Lista Reescrita",
+      "kind": "custom",
+      "refersTo": "list-quantity",
+      "description": "Linha de assinatura da landing: chute riscado, nome e quantidade calculada.",
+      "html": "<div class=\"ds-row\"><p class=\"ds-row-guess\"><s>arroz, uns 5 kg?</s></p><p class=\"ds-row-line\"><span class=\"ds-row-name\">Arroz</span><span class=\"ds-row-qty\">3 kg</span></p></div>",
+      "css": ".ds-row { width: 340px; padding: 8px 0; border-top: 1px solid var(--border, #e7e5e4); border-bottom: 1px solid var(--border, #e7e5e4); color: var(--foreground, #1c1917); } .ds-row p { margin: 0; } .ds-row-guess { color: var(--muted-foreground, #78716c); font-size: 24px; line-height: 1.25; letter-spacing: -0.02em; } .ds-row-guess s { text-decoration: none; background: linear-gradient(currentColor, currentColor) no-repeat 0 58% / 100% max(1.5px, 0.065em); } .ds-row-line { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-size: 36px; line-height: 1.15; } .ds-row-name { font-weight: 600; letter-spacing: -0.03em; } .ds-row-qty { color: var(--accent-hover, #7c3aed); font-family: var(--font-geist-mono, 'Geist Mono', ui-monospace, monospace); font-weight: 500; letter-spacing: -0.04em; word-spacing: -0.3em; white-space: nowrap; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Lista Reescrita",
+    "overview": "**Creative North Star: \"A Lista Reescrita\"**\n\nO Poupensa é uma lista de mercado que se corrige: o que a casa achava cede lugar ao que a conta mostra. O sistema inteiro serve a essa leitura. Papel off-white quente, tinta quase preta, fios finos no lugar de caixas pesadas, verde para agir e lilás para o que o app calculou. A tipografia é só Geist e Geist Mono, sem ornamento, e a força vem da escala e do contraste entre nome e quantidade.\n\nO mesmo mundo fala em dois registros. A landing persuade: palavras muito grandes, densidade baixa, fios como estrutura de toda a página. O app trabalha: coluna estreita de celular, cards de cantos generosos, quantidades em linhas curtas, tudo operável com uma mão e com pressa. Os tokens de cor, família e sombra são os mesmos nos dois; mudam a escala e a contenção.\n\nLight mode apenas, mobile-first. A superfície fica chapada e calma, sem gradiente visível nem sombra pesada, para que o lilás seja lido como informação e não como decoração.",
+    "keyCharacteristics": [
+      "Off-white quente com tinta de stone, nunca branco puro como fundo de página.",
+      "Verde agir, lilás calculado: duas vozes de cor com papéis que não se trocam.",
+      "Fios de 1px e tons de superfície fazem a estrutura; a sombra quase não aparece.",
+      "Geist em peso alto e tracking negativo; Geist Mono onde a quantidade é o assunto.",
+      "Ícones Lucide, alvos de toque de pelo menos 44px, foco sempre visível."
+    ],
+    "rules": [
+      {
+        "name": "The Lilac Is The App Rule",
+        "body": "Lilás marca o que o app produziu ou a própria marca: sugestão calculada, código de convite gerado, escuta de voz, ícones de destaque. Dado digitado pelo casal nunca é lilás; assim que a quantidade é editada, o badge lilás sai de cena.",
+        "section": "colors"
+      },
+      {
+        "name": "The AA Green Rule",
+        "body": "Texto sobre verde, e verde como texto, usa sempre o Verde Ação. O Verde da Marca não leva texto.",
+        "section": "colors"
+      },
+      {
+        "name": "The Struck Guess Rule",
+        "body": "O risco significa \"este valor foi substituído\" e sempre vem com o valor que o substitui. É traçado por uma linha de `max(1.5px, 0.065em)` a 58% da altura, cai para `line-through` em `forced-colors`, e aparece pintado mesmo sem animação.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Mono Rule",
+        "body": "Na Geist Mono com unidade, aplique `word-spacing: -0.3em` e tracking entre -0.03em e -0.04em: o espaço nativo da fonte separa demais número e unidade. A exceção são códigos de convite, em que o espaçamento largo (0.3em ou `tracking-widest`) ajuda a ditar o código em voz alta.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline Structure Rule",
+        "body": "Na landing, a separação entre conteúdos é um fio, não uma caixa. Fio de 2px em Tinta só para o que o casal registra; o que o app calcula fica no fio claro.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Card em repouso não tem sombra. Se uma superfície parece precisar de uma, antes tente o anel de 10% ou a troca de tom.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar lilás em tudo que o app calculou, e Lilás Calculado (#7c3aed) quando o lilás for texto.",
+      "Do usar Verde Ação (#188345) em CTAs, links e texto sobre verde.",
+      "Do manter todo alvo de toque em 44×44px ou mais, sobrescrevendo os tamanhos padrão do shadcn.",
+      "Do marcar dado de demonstração com o selo \"Exemplo\".",
+      "Do riscar um valor somente quando há outro valor substituindo-o.",
+      "Do condicionar animação a `prefers-reduced-motion`, deixando o estado final visível sem ela.",
+      "Do usar ícones Lucide, com `aria-hidden` quando acompanham texto.",
+      "Do usar cards no app e fios na landing; são dois registros do mesmo mundo."
+    ],
+    "donts": [
+      "Don't colocar texto sobre o Verde da Marca (#1f9d55) nem texto em Lilás da Marca (#8b5cf6) sobre branco; ficam abaixo de 4.5:1.",
+      "Don't pintar de lilás um dado que o casal digitou.",
+      "Don't usar gradiente visível. O risco é pintado com `linear-gradient(currentColor, currentColor)`, que resulta em cor chapada e é técnica permitida.",
+      "Don't passar da sombra Flutuante, nem colocar sombra em card em repouso.",
+      "Don't usar emoji como ícone estrutural.",
+      "Don't introduzir dark mode: as classes `dark:` do shadcn não têm paleta por trás.",
+      "Don't usar texto menor que 12px.",
+      "Don't colocar Tinta Lavada sobre Névoa em texto pequeno (4.40:1); use Tinta."
+    ]
+  }
+}
