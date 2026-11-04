@@ -1,0 +1,121 @@
+/* Acabamento da landing que utilitários não expressam bem: o risco traçado, a
+   demo (cuja marcação é de check-demo.tsx) e as superfícies do navegador.
+   Tudo escopado em .lp; nada aqui afeta o app. */
+
+.lp ::selection {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+/* O risco: pintado por padrão, sem depender de JS nem de animação. */
+.lp-strike {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 58%;
+  background-size: 100% max(1.5px, 0.065em);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+@media (forced-colors: active) {
+  .lp-strike {
+    background-image: none;
+    text-decoration: line-through;
+  }
+}
+
+/* Traçado uma vez ao entrar, no hero, uma linha depois da outra. Na demo o traço
+   responde ao arrasto: sem atraso e curto, senão fica atrás da mão. */
+@media (prefers-reduced-motion: no-preference) {
+  .lp-strike-draw {
+    animation: lp-strike-draw 800ms cubic-bezier(0.16, 1, 0.3, 1) 200ms backwards;
+  }
+  li:nth-child(2) .lp-strike-draw {
+    animation-delay: 420ms;
+  }
+  li:nth-child(3) .lp-strike-draw {
+    animation-delay: 640ms;
+  }
+  [data-slot="check-demo-struck"] .lp-strike-draw {
+    animation-duration: 240ms;
+    animation-delay: 0ms;
+  }
+}
+
+@keyframes lp-strike-draw {
+  from {
+    background-size: 0 max(1.5px, 0.065em);
+  }
+}
+
+/* Selo "Exemplo": igual no hero e na demo. */
+.lp-chip {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--muted-foreground);
+}
+
+/* O espaço da Geist Mono separa demais número e unidade. */
+.lp-demo .font-mono,
+.lp p > .font-mono {
+  word-spacing: -0.3em;
+}
+
+/* ---------- CheckDemo: a linha do arroz, em fios ----------
+   Regras fora de @layer vencem as utilities do Tailwind; por isso aqui só
+   entra o que as classes de check-demo.tsx não definem. A exceção são as
+   partes do Slider (components/ui), que não recebem classes de fora. */
+
+.lp-demo [data-slot="slider-track"] {
+  height: 4px;
+  background: var(--border);
+}
+
+.lp-demo [data-slot="slider-range"] {
+  background: var(--accent-hover);
+}
+
+.lp-demo [data-slot="slider-thumb"] {
+  border: 2px solid var(--accent-hover);
+  cursor: grab;
+  box-shadow: var(--shadow-md);
+}
+
+.lp-demo [data-slot="slider-thumb"]:active {
+  cursor: grabbing;
+}
+
+.lp-demo [data-slot="slider-thumb"]:has(input:focus-visible) {
+  outline: 2px solid var(--accent-hover);
+  outline-offset: 3px;
+}
+
+/* A quantidade grande já está na linha; aqui fica a frase que explica a conta.
+   Altura reservada para duas linhas, para "pode pular" não mover o que vem abaixo. */
+[data-slot="check-demo-result"] {
+  border-top: 1px solid var(--border);
+  padding-block: 12px;
+  min-height: calc(2lh + 26px);
+  font-size: 18px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+[data-slot="check-demo-suggestion"]::before {
+  content: "\A";
+  white-space: pre;
+}
+
+[data-slot="check-demo-note"] {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+@media (min-width: 1024px) {
+  [data-slot="check-demo-result"] {
+    font-size: 20px;
+  }
+}
