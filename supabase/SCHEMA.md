@@ -43,6 +43,20 @@ RLS ao consultar `household_members`.
 
 Ambas `security definer` com `search_path = public`.
 
+## Grants da Data API (`00004`)
+
+O Supabase não expõe mais tabelas novas do `public` automaticamente (desde
+30/10/2026), então os grants ficam na migration:
+
+- `authenticated` e `service_role`: `select, insert, update, delete` nas 6
+  tabelas e `execute` em `is_household_member`, `create_household` e
+  `join_household_by_code`. O RLS continua filtrando por cima.
+- `anon`: nenhum acesso — todas as policies dependem de `auth.uid()`.
+
+Toda tabela ou função nova precisa de grant explícito na própria migration.
+Os testes de integração não concedem nada além de `usage` no schema
+(`supabase/test/grants.sql`), então um grant faltando faz a suíte falhar.
+
 ## Seed
 
 `supabase/seed.sql` — aplicado por `supabase db reset` no ambiente local:
