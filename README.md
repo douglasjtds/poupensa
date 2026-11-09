@@ -29,7 +29,7 @@ Banco: aplique as migrations de `supabase/migrations/` no seu projeto Supabase
 
 ### Configuração manual no Supabase
 
-1. Criar projeto e copiar URL + anon key para `.env.local`
+1. Criar projeto e copiar a URL e a publishable key (`sb_publishable_...`, em Project Settings → API Keys) para `.env.local`
 2. Aplicar migrations (e seed, se local)
 3. Auth → Providers: habilitar **Email** e **Google** (para OAuth, configurar
    client ID/secret no Google Cloud Console e a redirect URL

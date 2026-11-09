@@ -3,14 +3,15 @@ import { cookies } from "next/headers";
 import type { Database } from "@/types/database";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "http://localhost:54321";
-const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "public-anon-key";
+const SUPABASE_PUBLISHABLE_KEY =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? "sb_publishable_placeholder";
 
 // Usado apenas em route handlers (ex.: /auth/callback) — o app é
 // client-side first (PRD.md), então componentes de página usam lib/supabase/client.ts.
 export async function createClient() {
   const cookieStore = await cookies();
 
-  return createServerClient<Database>(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  return createServerClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
     cookies: {
       getAll() {
         return cookieStore.getAll();

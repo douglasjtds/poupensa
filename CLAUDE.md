@@ -24,6 +24,7 @@ Não implemente nada listado como "fora do MVP" nesses documentos.
 | Testes de integração                             | `tests/integration/`                                         |
 | Testes E2E (Playwright)                          | `e2e/`                                                       |
 | Assets estáticos (ícones, manifest)              | `public/`                                                    |
+| Templates de email do Supabase Auth (HTML)       | `emails/` (colados no painel; ver `emails/README.md`)        |
 | Documentos de produto                            | `instructions/` (somente leitura, não gerar código aqui)     |
 
 Regras:
