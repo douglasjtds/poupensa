@@ -21,13 +21,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <HouseholdProvider>
       <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col bg-background">
-        <div className="flex-1 pb-24">{children}</div>
+        <div className="flex-1 pb-[calc(6rem+env(safe-area-inset-bottom))]">{children}</div>
         <Pwa />
         <nav
           aria-label="Navegação principal"
           className="fixed inset-x-0 bottom-0 z-10 border-t border-border bg-card"
         >
-          <div className="mx-auto flex w-full max-w-lg items-stretch justify-around pb-[env(safe-area-inset-bottom)]">
+          <div className="mx-auto flex w-full max-w-lg items-stretch justify-around pr-[max(env(safe-area-inset-right),0.75rem)] pb-[max(env(safe-area-inset-bottom),0.5rem)] pl-[max(env(safe-area-inset-left),0.75rem)]">
             {NAV.map(({ href, label, icon: Icon }) => {
               const active = pathname.startsWith(href);
               return (
@@ -37,12 +37,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     // 44px+ touch target
-                    "flex min-h-14 flex-1 flex-col items-center justify-center gap-0.5 text-[11px] font-medium",
+                    "flex min-h-16 min-w-0 flex-1 flex-col items-center justify-center gap-1 text-xs font-medium",
                     active ? "text-primary" : "text-muted-foreground"
                   )}
                 >
-                  <Icon className="size-5" aria-hidden />
-                  {label}
+                  <Icon className="size-6" aria-hidden />
+                  <span className="max-w-full truncate">{label}</span>
                 </Link>
               );
             })}
