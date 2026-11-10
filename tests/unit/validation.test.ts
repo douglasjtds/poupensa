@@ -4,6 +4,7 @@ import {
   safeNextPath,
   validateInviteCode,
   validateItemName,
+  validateNewPassword,
   validateQuantity,
   validateUnit,
 } from "@/lib/validation";
@@ -103,5 +104,23 @@ describe("safeNextPath", () => {
     expect(safeNextPath("@evil.com")).toBe("/despensa");
     expect(safeNextPath("//evil.com")).toBe("/despensa");
     expect(safeNextPath("/\\evil.com")).toBe("/despensa");
+  });
+});
+
+describe("validateNewPassword", () => {
+  it("exige pelo menos 8 caracteres", () => {
+    expect(validateNewPassword("1234567")).toEqual({
+      ok: false,
+      error: "A senha precisa ter pelo menos 8 caracteres.",
+    });
+    expect(validateNewPassword("12345678")).toEqual({ ok: true });
+  });
+
+  it("exige a confirmação igual quando informada", () => {
+    expect(validateNewPassword("12345678", "12345679")).toEqual({
+      ok: false,
+      error: "As senhas não coincidem.",
+    });
+    expect(validateNewPassword("12345678", "12345678")).toEqual({ ok: true });
   });
 });

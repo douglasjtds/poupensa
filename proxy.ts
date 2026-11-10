@@ -1,7 +1,9 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_PATHS = ["/login", "/signup", "/auth", "/privacidade", "/termos"];
+// /redefinir-senha fica de fora de propósito: só abre com a sessão criada
+// pelo link do email (o callback já autenticou quem chega lá).
+const PUBLIC_PATHS = ["/login", "/signup", "/esqueci-senha", "/auth", "/privacidade", "/termos"];
 
 // Renova a sessão Supabase (cookies) e protege rotas do app.
 // A checagem de "tem household?" é client-side (HouseholdProvider) —

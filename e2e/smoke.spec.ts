@@ -31,6 +31,28 @@ test("signup pede nome, email e senha", async ({ page }) => {
   await expect(page.getByLabel("Senha")).toBeVisible();
 });
 
+test("login leva ao pedido de link de redefinição de senha", async ({ page }) => {
+  await page.goto("/login");
+  await page.getByRole("link", { name: /esqueci minha senha/i }).click();
+  await expect(page).toHaveURL(/\/esqueci-senha$/);
+  // CardTitle do shadcn é uma div, não um heading.
+  await expect(page.getByText("Esqueci minha senha", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Email")).toBeVisible();
+  await expect(page.getByRole("button", { name: /enviar link/i })).toBeVisible();
+});
+
+test("redefinir senha exige sessão ou mostra a senha nova duas vezes", async ({ page }) => {
+  await page.goto("/redefinir-senha");
+  // Com Supabase configurado, o proxy manda o visitante sem sessão para o login;
+  // sem Supabase (CI), o proxy não roda e a tela abre.
+  if (new URL(page.url()).pathname === "/login") {
+    expect(new URL(page.url()).searchParams.get("next")).toBe("/redefinir-senha");
+    return;
+  }
+  await expect(page.getByLabel("Senha nova", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Repita a senha nova")).toBeVisible();
+});
+
 test("rota protegida redireciona visitante para /login", async ({ page }) => {
   await page.goto("/despensa");
   await page.waitForURL(/\/login/);
