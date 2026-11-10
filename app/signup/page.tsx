@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PoupensaLogo } from "@/components/poupensa-logo";
+import { MIN_PASSWORD_LENGTH, validateNewPassword } from "@/lib/validation";
 
 export default function SignupPage() {
   const supabase = createClient();
@@ -22,8 +23,9 @@ export default function SignupPage() {
 
   async function handleSignup(e: React.FormEvent) {
     e.preventDefault();
-    if (password.length < 8) {
-      setError("A senha precisa ter pelo menos 8 caracteres.");
+    const passwordCheck = validateNewPassword(password);
+    if (!passwordCheck.ok) {
+      setError(passwordCheck.error);
       return;
     }
     setSubmitting(true);
@@ -122,7 +124,7 @@ export default function SignupPage() {
                 type="password"
                 autoComplete="new-password"
                 required
-                minLength={8}
+                minLength={MIN_PASSWORD_LENGTH}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="h-11"
