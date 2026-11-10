@@ -69,3 +69,20 @@ export function safeNextPath(next: string | null | undefined, fallback = "/despe
 }
 
 export const UNITS = ["un", "kg", "g", "L", "ml", "pacote", "caixa", "rolo", "dúzia"] as const;
+
+/** Mínimo exigido no cadastro e na redefinição de senha. */
+export const MIN_PASSWORD_LENGTH = 8;
+
+/** Senha nova; com `confirmation`, também confere se as duas são iguais. */
+export function validateNewPassword(password: string, confirmation?: string): ValidationResult {
+  if (password.length < MIN_PASSWORD_LENGTH) {
+    return {
+      ok: false,
+      error: `A senha precisa ter pelo menos ${MIN_PASSWORD_LENGTH} caracteres.`,
+    };
+  }
+  if (confirmation !== undefined && confirmation !== password) {
+    return { ok: false, error: "As senhas não coincidem." };
+  }
+  return { ok: true };
+}

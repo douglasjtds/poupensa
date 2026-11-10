@@ -15,7 +15,7 @@ Dashboard › **Authentication › Emails**:
 | `invite-user.html`      | Invite user          | `{{ .ConfirmationURL }}`                     | Não (convite do parceiro é por código) |
 | `magic-link.html`       | Magic Link           | `{{ .ConfirmationURL }}`                     | Não |
 | `change-email.html`     | Change Email Address | `{{ .ConfirmationURL }}`                     | Não |
-| `reset-password.html`   | Reset Password       | `{{ .RedirectTo }}`, `{{ .TokenHash }}`      | Não (ver pendência abaixo) |
+| `reset-password.html`   | Reset Password       | `{{ .RedirectTo }}`, `{{ .TokenHash }}`      | Sim (`/esqueci-senha`) |
 | `reauthentication.html` | Reauthentication     | `{{ .Token }}`                               | Não |
 
 Todos usam `{{ .SiteURL }}` no link da logo.
@@ -51,11 +51,13 @@ Configuration › Redirect URLs**, o Supabase troca o `RedirectTo` pelo Site URL
 puro; o template detecta isso (`{{ if eq .RedirectTo .SiteURL }}`) e monta o
 caminho do callback a partir do `{{ .SiteURL }}`.
 
-### Pendência: fluxo de "esqueci a senha"
+### Fluxo de "esqueci a senha"
 
-O template e o callback estão prontos, mas o app ainda **não tem** a tela de
-"esqueci a senha" (que chama `resetPasswordForEmail` com o `redirectTo` acima)
-nem a página `/redefinir-senha`. Até existirem, este email não é disparado.
+`/esqueci-senha` chama `resetPasswordForEmail` com o `redirectTo` acima. O
+link do email passa pelo `/auth/callback`, que cria a sessão e leva a
+`/redefinir-senha`, onde a pessoa define a senha nova (`updateUser`). Para o
+`RedirectTo` não cair no Site URL puro, a origem do app precisa estar em
+**Redirect URLs** (ex.: `http://localhost:3000/**` e a URL de produção).
 
 ## Estrutura compartilhada
 
